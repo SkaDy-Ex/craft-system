@@ -1,0 +1,259 @@
+{
+    "resources": {
+        "Уголь": {
+            "type": "basic",
+            "unit": "шт",
+            "cost_per_unit": 4
+        },
+        "Шкура": {
+            "type": "basic",
+            "unit": "шт",
+            "cost_per_unit": 25
+        },
+        "Железная руда": {
+            "type": "basic",
+            "unit": "шт",
+            "cost_per_unit": 6
+        },
+        "Брёвна": {
+            "type": "basic",
+            "unit": "шт",
+            "cost_per_unit": 6
+        },
+        "Медная руда": {
+            "type": "basic",
+            "unit": "шт",
+            "cost_per_unit": 10
+        },
+        "Золотая руда": {
+            "type": "basic",
+            "unit": "шт",
+            "cost_per_unit": 25
+        },
+        "Серебрянная руда": {
+            "type": "basic",
+            "unit": "шт",
+            "cost_per_unit": 35
+        },
+        "Экзотическое дерево": {
+            "type": "basic",
+            "unit": "шт",
+            "cost_per_unit": 30
+        },
+        "Сталь": {
+            "type": "composite",
+            "composition": {
+                "Уголь": 2,
+                "Железная руда": 3
+            },
+            "output_quantity": 1
+        },
+        "Свинная шкура": {
+            "type": "composite",
+            "composition": {
+                "Шкура": 1
+            },
+            "output_quantity": 2
+        },
+        "Железо (Iron)": {
+            "type": "composite",
+            "composition": {
+                "Уголь": 1,
+                "Железная руда": 2
+            },
+            "output_quantity": 1
+        },
+        "Металлолом": {
+            "type": "composite",
+            "composition": {
+                "Уголь": 1,
+                "Железная руда": 1
+            },
+            "output_quantity": 1
+        },
+        "Медь": {
+            "type": "composite",
+            "composition": {
+                "Уголь": 1,
+                "Медная руда": 2
+            },
+            "output_quantity": 1
+        },
+        "Франкфуртская сталь": {
+            "type": "composite",
+            "composition": {
+                "Сталь": 2,
+                "Уголь": 2,
+                "Брёвна": 1
+            },
+            "output_quantity": 1
+        },
+        "Крепёж": {
+            "type": "composite",
+            "composition": {
+                "Железо (Iron)": 1,
+                "Уголь": 1
+            },
+            "output_quantity": 1
+        },
+        "Наконечник меча (Ур. 2)": {
+            "type": "composite",
+            "composition": {
+                "Железо (Iron)": 1
+            },
+            "output_quantity": 1
+        },
+        "Гарда меча круглая (Ур. 2)": {
+            "type": "composite",
+            "composition": {
+                "Железо (Iron)": 1,
+                "Металлолом": 1
+            },
+            "output_quantity": 1
+        },
+        "Гарда меча прямая (Ур. 3)": {
+            "type": "composite",
+            "composition": {
+                "Железо (Iron)": 1,
+                "Металлолом": 1
+            },
+            "output_quantity": 1
+        },
+        "Толедская сталь": {
+            "type": "composite",
+            "composition": {
+                "Франкфуртская сталь": 2,
+                "Серебрянная руда": 1,
+                "Уголь": 2
+            },
+            "output_quantity": 1
+        },
+        "Кожа": {
+            "type": "composite",
+            "composition": {
+                "Шкура": 1
+            },
+            "output_quantity": 2
+        },
+        "Toledo Steel": {
+            "type": "composite",
+            "composition": {
+                "Франкфуртская сталь": 2,
+                "Серебрянная руда": 1,
+                "Уголь": 2
+            },
+            "output_quantity": 1
+        }
+    },
+    "crafts": [
+        {
+            "name": "Меч Милитари",
+            "quantity": 1,
+            "composition": {
+                "Гарда меча круглая (Ур. 2)": 1,
+                "Свинная шкура": 1,
+                "Наконечник меча (Ур. 2)": 1,
+                "Сталь": 1,
+                "Железо (Iron)": 1
+            },
+            "outputQuantity": 1,
+            "category": "weapons"
+        },
+        {
+            "name": "Клинок охотничий",
+            "quantity": 1,
+            "composition": {
+                "Сталь": 2,
+                "Металлолом": 1,
+                "Крепёж": 1
+            },
+            "outputQuantity": 1,
+            "category": "weapons"
+        },
+        {
+            "name": "Меч Болеслава",
+            "quantity": 1,
+            "composition": {
+                "Медная руда": 1,
+                "Сталь": 7,
+                "Уголь": 11,
+                "Брёвна": 3,
+                "Шкура": 1
+            },
+            "outputQuantity": 1,
+            "category": "weapons"
+        },
+        {
+            "name": "Меч Оппортунити",
+            "quantity": 1,
+            "composition": {
+                "Медная руда": 1,
+                "Сталь": 5,
+                "Уголь": 9,
+                "Шкура": 1,
+                "Брёвна": 2
+            },
+            "outputQuantity": 1,
+            "category": "weapons"
+        },
+        {
+            "name": "Куман Фокос",
+            "quantity": 1,
+            "composition": {
+                "Крепёж": 1,
+                "Железо (Iron)": 1,
+                "Франкфуртская сталь": 1,
+                "Медная руда": 1,
+                "Сталь": 3,
+                "Уголь": 11,
+                "Шкура": 1,
+                "Брёвна": 3
+            },
+            "outputQuantity": 1,
+            "category": "weapons"
+        },
+        {
+            "name": "Подковы гончие",
+            "quantity": 1,
+            "composition": {
+                "Железо (Iron)": 2,
+                "Франкфуртская сталь": 1,
+                "Уголь": 1
+            },
+            "outputQuantity": 1,
+            "category": "tools"
+        },
+        {
+            "name": "Призрачные подковы",
+            "quantity": 1,
+            "composition": {
+                "Уголь": 8,
+                "Железо (Iron)": 2,
+                "Toledo Steel": 1,
+                "Медная руда": 1,
+                "Сталь": 1,
+                "Брёвна": 1
+            },
+            "outputQuantity": 1,
+            "category": "tools"
+        },
+        {
+            "name": "Basilard",
+            "quantity": 1,
+            "composition": {
+                "Уголь": 19,
+                "Крепёж": 1,
+                "Медная руда": 2,
+                "Шкура": 4,
+                "Брёвна": 5,
+                "Сталь": 5,
+                "Toledo Steel": 1,
+                "Медь": 1,
+                "Экзотическое дерево": 1,
+                "Железо (Iron)": 1
+            },
+            "outputQuantity": 1,
+            "category": "weapons"
+        }
+    ]
+}

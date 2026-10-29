@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Система крафта (Nested BOM)</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="drag-overlay"></div>
+    <div class="app-container">
+        <header>
+            <h1>⚒️ Система крафта</h1>
+            <div class="header-controls">
+                <div class="file-actions">
+                    <button id="btn-load" class="btn btn-secondary">📂 Загрузить JSON</button>
+                    <button id="btn-save" class="btn btn-secondary">💾 Сохранить JSON</button>
+                    <input type="file" id="file-input" accept=".json" style="display:none">
+                </div>
+            </div>
+        </header>
+
+        <!-- Статус-бар -->
+        <div id="status-bar" class="status-bar">
+            <span id="stat-resources">📦 Ресурсы: 0</span>
+            <span id="stat-crafts">🔨 Крафты: 0</span>
+            <span id="stat-total-cost">💰 Итого: 0 грш.</span>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="resources">📦 Ресурсы</button>
+            <button class="tab-btn" data-tab="craft">🔨 Крафт</button>
+            <button class="tab-btn" data-tab="materials">📋 Материалы</button>
+        </div>
+
+        <!-- ==================== ВКЛАДКА РЕСУРСЫ ==================== -->
+        <div id="tab-resources" class="tab-content active">
+            <div class="resources-panel">
+                <div class="table-header">
+                    <h2>Список ресурсов</h2>
+                    <div class="table-actions">
+                        <input type="text" id="search-resources" class="form-input" placeholder="🔍 Поиск..." style="width:200px;">
+                        <button id="btn-add-basic" class="btn btn-primary">＋ Базовый ресурс</button>
+                        <button id="btn-add-composite" class="btn btn-primary">＋ Составной ресурс</button>
+                        <button id="btn-edit-resource" class="btn btn-warning">✎ Редактировать</button>
+                        <button id="btn-delete-resource" class="btn btn-danger">✕ Удалить</button>
+                    </div>
+                </div>
+
+                <table id="resources-table" class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Название</th>
+                            <th>Тип</th>
+                            <th>Стоимость</th>
+                            <th>Ед. изм.</th>
+                            <th>Действие</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resources-tbody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ==================== ВКЛАДКА КРАФТ ==================== -->
+        <div id="tab-craft" class="tab-content">
+            <div class="craft-panel">
+                <div class="craft-header">
+                    <h2>🏭 Список крафтов</h2>
+                    <div class="craft-actions">
+                        <select id="category-filter" class="form-select" style="width:200px;">
+                            <option value="all">Все</option>
+                        </select>
+                        <button id="btn-add-craft" class="btn btn-primary">＋ Новый крафт</button>
+                        <button id="btn-edit-craft" class="btn btn-warning">✎ Редактировать</button>
+                        <button id="btn-delete-craft" class="btn btn-danger">✕ Удалить</button>
+                    </div>
+                </div>
+
+                <table id="crafts-table" class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Изделие</th>
+                            <th>Категория</th>
+                            <th>Количество</th>
+                            <th>Стоимость одного</th>
+                            <th>Общая стоимость</th>
+                            <th>Действие</th>
+                        </tr>
+                    </thead>
+                    <tbody id="crafts-tbody"></tbody>
+                </table>
+
+                <div id="total-craft-cost" class="total-cost">Итого за все: —</div>
+            </div>
+        </div>
+
+        <!-- ==================== ВКЛАДКА МАТЕРИАЛЫ ==================== -->
+        <div id="tab-materials" class="tab-content">
+            <div class="materials-panel">
+                <div class="table-header">
+                    <h2>📋 Сводка материалов</h2>
+                    <div class="table-actions">
+                        <button id="btn-clear-cart" class="btn btn-danger">🗑 Очистить корзину</button>
+                        <button id="btn-export-materials" class="btn btn-primary">📄 Экспорт сводки</button>
+                    </div>
+                </div>
+                <p class="materials-hint">Автоматический расчёт всех базовых ресурсов, необходимых для производства всех крафтов.</p>
+                <table id="materials-table" class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Ресурс</th>
+                            <th>Тип</th>
+                            <th>Необходимо</th>
+                            <th>Ед. изм.</th>
+                            <th>Стоимость</th>
+                        </tr>
+                    </thead>
+                    <tbody id="materials-tbody"></tbody>
+                </table>
+                <div id="materials-total" class="total-cost">Итого материалов: —</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== МОДАЛЬНЫЕ ОКНА ==================== -->
+
+    <!-- Диалог: редактирование базового ресурса -->
+    <div id="modal-resource-edit" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-resource-title">Редактировать базовый ресурс</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="form-basic-resource">
+                    <div class="form-group">
+                        <label>Название:</label>
+                        <input type="text" id="basic-name" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label>Ед. изм.:</label>
+                        <input type="text" id="basic-unit" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label>Цена за ед.:</label>
+                        <input type="number" id="basic-cost" class="form-input" step="0.01" min="0">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Сохранить</button>
+                        <button type="button" class="btn btn-secondary modal-cancel">Отмена</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Диалог: редактирование состава -->
+    <div id="modal-composition" class="modal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h3 id="modal-composition-title">Редактировать составной ресурс</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="form-composition">
+                    <div class="form-group">
+                        <label>Название ресурса:</label>
+                        <input type="text" id="comp-name" class="form-input">
+                    </div>
+                    <div class="form-group" id="form-group-category" style="display:none;">
+                        <label>Категория:</label>
+                        <select id="comp-category" class="form-select"></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Выход (шт.):</label>
+                        <input type="number" id="comp-output" class="form-input" step="1" min="1" value="1">
+                    </div>
+                    <div class="form-group">
+                        <label>Состав:</label>
+                        <table id="composition-table" class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Ресурс</th>
+                                    <th>Количество</th>
+                                </tr>
+                            </thead>
+                            <tbody id="composition-tbody"></tbody>
+                        </table>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" id="btn-add-component" class="btn btn-primary">＋ Добавить компонент</button>
+                        <button type="button" id="btn-remove-component" class="btn btn-danger">✕ Удалить</button>
+                    </div>
+                    <div id="comp-cost-preview" class="cost-display" style="margin-top:10px;">
+                        Расчётная стоимость: —
+                    </div>
+                    <div class="form-actions" style="margin-top:10px;">
+                        <button type="submit" class="btn btn-primary">Сохранить</button>
+                        <button type="button" class="btn btn-secondary modal-cancel">Отмена</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Диалог: выбор ресурса для добавления в состав -->
+    <div id="modal-select-component" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Выберите ресурс</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Ресурс:</label>
+                    <select id="component-select" class="form-select"></select>
+                </div>
+                <div class="form-group">
+                    <label>Количество:</label>
+                    <input type="number" id="component-qty" class="form-input" step="0.01" min="0.01" value="1">
+                </div>
+                <div class="form-actions">
+                    <button id="btn-confirm-component" class="btn btn-primary">Добавить</button>
+                    <button class="btn btn-secondary modal-cancel">Отмена</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Диалог: дерево состава (BOM Tree) -->
+    <div id="modal-bom-tree" class="modal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h3 id="bom-tree-title">Состав ресурса</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="bom-tree-container" class="bom-tree"></div>
+                <div id="bom-tree-total-cost" class="cost-display" style="margin-top:10px;"></div>
+                <div class="form-actions" style="margin-top:10px;">
+                    <button id="btn-export-bom-from-tree" class="btn btn-secondary">📄 Экспорт в текстовый файл</button>
+                    <button class="btn btn-secondary modal-cancel">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Диалог: полная разузловка -->
+    <div id="modal-full-bom" class="modal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h3 id="full-bom-title">Полная разузловка</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="full-bom-report" class="bom-report"></div>
+                <div class="form-actions">
+                    <button id="btn-export-full-bom" class="btn btn-secondary">📄 Сохранить в файл</button>
+                    <button class="btn btn-secondary modal-cancel">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Диалог: информация -->
+    <div id="modal-info" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="info-title">Информация</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="info-text"></p>
+                <div class="form-actions">
+                    <button class="btn btn-primary modal-cancel">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Диалог: ошибка -->
+    <div id="modal-error" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Ошибка</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="error-text" style="color:red;"></p>
+                <div class="form-actions">
+                    <button class="btn btn-primary modal-cancel">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== МОДУЛИ (порядок важен) ==================== -->
+    <!-- 1. Data layer — классы ресурсов -->
+    <script src="data/registry.js"></script>
+    <!-- 2. Data layer — крафты и категории -->
+    <script src="data/crafts.js"></script>
+    <!-- 3. Утилиты -->
+    <script src="storage.js"></script>
+    <!-- 4. UI — базовые компоненты -->
+    <script src="ui/modals.js"></script>
+    <script src="ui/tabs.js"></script>
+    <!-- 5. UI — таблицы и формы -->
+    <script src="ui/resources.js"></script>
+    <script src="ui/crafts.js"></script>
+    <!-- 6. UI — BOM дерево и материалы -->
+    <script src="ui/bom.js"></script>
+    <script src="ui/materials.js"></script>
+    <!-- 7. Файловые операции -->
+    <script src="dragdrop.js"></script>
+    <!-- 8. Точка входа -->
+    <script src="main.js"></script>
+</body>
+</html>
