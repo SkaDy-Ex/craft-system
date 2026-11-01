@@ -98,8 +98,7 @@ function aggregateCartResources() {
 
             if (res.type === 'composite') {
                 // Разворачиваем составной и добавляем его компоненты
-                const output = res.outputQuantity || 1;
-                const expanded = getRegistryBom(compName, totalQty / output);
+                const expanded = getRegistryBom(compName, totalQty);
                 for (const [name, qty] of Object.entries(expanded)) {
                     totalNeeded[name] = (totalNeeded[name] || 0) + qty;
                 }
@@ -111,9 +110,23 @@ function aggregateCartResources() {
 }
 
 // Рассчитать стоимость с учётом наличия (рекурсивно для составных)
+// Возвращает детальную информацию по каждому ресурсу
 function calculateCostWithInStock(totalNeeded, inStock) {
     // Сначала копируем все потребности
     const remaining = { ...totalNeeded };
+    // Детальная информация по каждому ресурсу
+    const details = {};
+
+    // Инициализируем детали
+    for (const [resName, qty] of Object.entries(totalNeeded)) {
+        details[resName] = {
+            needed: Math.round(qty),
+            stock: 0,
+            deductedFromComposite: 0,
+            deductedFromDirect: 0,
+            remaining: Math.round(qty)
+        };
+    }
 
     // Применяем наличие: для составных рекурсивно вычитаем все ресурсы в дереве
     for (const [resName, stockQty] of Object.entries(inStock)) {
@@ -123,21 +136,51 @@ function calculateCostWithInStock(totalNeeded, inStock) {
         const res = app.registry.resources[resName];
         if (!res) continue;
 
+        // Записываем наличие
+        if (!details[resName]) {
+            details[resName] = {
+                needed: 0,
+                stock: 0,
+                deductedFromComposite: 0,
+                deductedFromDirect: 0,
+                remaining: 0
+            };
+        }
+        details[resName].stock = qty;
+
         // Вычитаем из этого ресурса
+        const beforeRemaining = Math.max(0, (remaining[resName] || 0));
         remaining[resName] = Math.max(0, (remaining[resName] || 0) - qty);
+        const directDeduction = beforeRemaining - Math.max(0, remaining[resName]);
+        details[resName].deductedFromDirect = directDeduction;
 
         if (res.type === 'composite') {
             // Рекурсивно вычитаем все ресурсы в дереве этого составного
-            const outputPerUnit = res.outputQuantity || 1;
-            const batches = qty / outputPerUnit;
-
-            // Получаем все ресурсы в дереве этого составного
-            const subBom = getAllResourcesInBom(resName, batches);
+            const subBom = getAllResourcesInBom(resName, qty);
             for (const [subName, subQty] of Object.entries(subBom)) {
                 if (subName === resName) continue; // Не вычитаем сам ресурс (уже вычли)
+
+                if (!details[subName]) {
+                    details[subName] = {
+                        needed: 0,
+                        stock: 0,
+                        deductedFromComposite: 0,
+                        deductedFromDirect: 0,
+                        remaining: 0
+                    };
+                }
+
+                const beforeRemainingSub = Math.max(0, (remaining[subName] || 0));
                 remaining[subName] = Math.max(0, (remaining[subName] || 0) - subQty);
+                const deductionSub = beforeRemainingSub - Math.max(0, remaining[subName]);
+                details[subName].deductedFromComposite += deductionSub;
             }
         }
+    }
+
+    // Обновляем remaining в деталях
+    for (const resName of Object.keys(details)) {
+        details[resName].remaining = Math.max(0, Math.round(remaining[resName] || 0));
     }
 
     // Считаем стоимость только за то, что нужно докупить (базовые ресурсы)
@@ -151,7 +194,7 @@ function calculateCostWithInStock(totalNeeded, inStock) {
         }
     }
 
-    return { remaining, totalCost };
+    return { remaining, totalCost, details };
 }
 
 function renderMaterialsTable() {
@@ -216,6 +259,7 @@ function renderMaterialsTable() {
     // Step 2: Apply in-stock and calculate cost
     const costResult = calculateCostWithInStock(totalNeeded, app.materialsInStock || {});
     const neededRemaining = costResult.remaining;
+    const details = costResult.details;
     let totalCost = costResult.totalCost;
 
     // Add tolls
@@ -244,21 +288,53 @@ function renderMaterialsTable() {
         const res = app.registry.resources[resName];
         const tr = document.createElement('tr');
 
-        const needed = Math.round(totalNeeded[resName] || 0);
-        const stock = parseFloat(app.materialsInStock[resName]) || 0;
-        const remainingQty = Math.max(0, Math.round(neededRemaining[resName] || 0));
+        const detail = details[resName] || {
+            needed: Math.round(totalNeeded[resName] || 0),
+            stock: 0,
+            deductedFromComposite: 0,
+            deductedFromDirect: 0,
+            remaining: Math.max(0, Math.round(neededRemaining[resName] || 0))
+        };
+        const needed = detail.needed;
+        const stock = detail.stock;
+        const remainingQty = detail.remaining;
 
         // Name
         const tdName = document.createElement('td');
         tdName.textContent = resName;
         tr.appendChild(tdName);
 
-        // Needed (remaining after in-stock)
+        // Needed column: formula "Нужно - Есть = Итого"
         const tdNeeded = document.createElement('td');
-        tdNeeded.textContent = remainingQty;
         tdNeeded.style.fontWeight = '600';
-        if (remainingQty === 0 && needed > 0) {
-            tdNeeded.style.color = '#81c784';
+        tdNeeded.style.whiteSpace = 'nowrap';
+        
+        if (needed === 0 && stock === 0) {
+            tdNeeded.textContent = '—';
+            tdNeeded.style.color = '#999';
+        } else {
+            // Формула: нужно - есть = итого
+            const formulaParts = [];
+            formulaParts.push('<span style="color:#d4c4a0;">' + needed + '</span>');
+            
+            if (stock > 0) {
+                formulaParts.push('<span style="color:#8a7a60;"> − </span>');
+                formulaParts.push('<span style="color:#81c784;">' + stock + '</span>');
+            }
+            
+            if (detail.deductedFromComposite > 0) {
+                formulaParts.push('<span style="color:#8a7a60;"> (−' + Math.round(detail.deductedFromComposite) + ' из сост.)</span>');
+            }
+            
+            formulaParts.push('<span style="color:#8a7a60;"> = </span>');
+            
+            if (remainingQty > 0) {
+                formulaParts.push('<span style="color:#e08080;">' + remainingQty + '</span>');
+            } else {
+                formulaParts.push('<span style="color:#81c784;">✓</span>');
+            }
+            
+            tdNeeded.innerHTML = formulaParts.join('');
         }
         tr.appendChild(tdNeeded);
 
