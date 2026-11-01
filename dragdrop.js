@@ -41,6 +41,7 @@ document.body.addEventListener('drop', (e) => {
             app.registry = imported.registry;
             app.crafts = imported.crafts;
             app.materialsCrafts = data.materialsCrafts || [];
+            app.materialsInStock = {};
             renderResourcesTable();
             renderCraftsTable();
             renderMaterialsTable();
@@ -71,6 +72,7 @@ document.getElementById('file-input').addEventListener('change', (e) => {
             app.registry = imported.registry;
             app.crafts = imported.crafts;
             app.materialsCrafts = data.materialsCrafts || [];
+            app.materialsInStock = {};
             renderResourcesTable();
             renderCraftsTable();
             renderMaterialsTable();

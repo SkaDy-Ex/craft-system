@@ -68,7 +68,7 @@ function buildTreeHtml(container, name, multiplier, isRoot) {
 
         const childrenDiv = document.createElement('div');
         childrenDiv.className = 'tree-children';
-        childrenDiv.style.display = 'none';
+        childrenDiv.style.display = 'block';
 
         for (const [compName, qty] of Object.entries(res.composition)) {
             buildTreeHtml(childrenDiv, compName, multiplier * qty, false);
@@ -80,26 +80,6 @@ function buildTreeHtml(container, name, multiplier, isRoot) {
     container.appendChild(div);
 }
 
-document.getElementById('btn-export-bom-from-tree').addEventListener('click', () => {
-    const name = app.bomTreeResourceName;
-    try {
-        const bom = app.registry.getFullBom(name);
-        const cost = app.registry.getTotalCost(name);
-
-        let text = '=== Ресурс: ' + name + ' ===\n';
-        text += 'Полная стоимость: ' + cost.toFixed(2) + ' грш.\n\n';
-        text += '--- Полная разузловка (BOM) ---\n';
-        for (const [resName, qty] of Object.entries(bom).sort()) {
-            text += '  ' + resName.padEnd(20) + ' ' + Math.round(qty) + '\n';
-        }
-
-        downloadText(name + '_bom.txt', text);
-        showToast('BOM сохранён', 'success');
-    } catch (err) {
-        showError('Ошибка экспорта: ' + err.message);
-    }
-});
-
 // ==================== КРАФТ — ПОЛНАЯ РАЗУЗЛОВКА ====================
 
 function showFullBomForCraft(craftIndex) {
@@ -107,7 +87,7 @@ function showFullBomForCraft(craftIndex) {
     if (!craft) return;
 
     try {
-        const temp = new CompositeResource(craft.name, craft.composition);
+        const temp = new CompositeResource(craft.name, craft.composition, craft.outputQuantity, craft.toll || 0);
         const fullBom = temp.getBom(app.registry.resources);
         const costOne = temp.getCost(app.registry.resources);
         const totalCost = costOne * craft.quantity;
@@ -187,6 +167,9 @@ function generateFullBomText(craft, fullBom, costOne, totalCost) {
     text += '═══════════════════════════════════════════\n\n';
     text += 'Категория: ' + getCategoryLabel(craft.category) + '\n';
     text += 'Стоимость одного: ' + costOne.toFixed(2) + ' грш.\n';
+    if (craft.toll > 0) {
+        text += 'Пошлина кузни: ' + craft.toll.toFixed(2) + ' грш.\n';
+    }
     text += 'Общая стоимость: ' + totalCost.toFixed(2) + ' грш.\n\n';
     text += '─── Прямой состав ───\n';
     for (const [name, qty] of Object.entries(craft.composition)) {
@@ -205,7 +188,4 @@ function escapeHtml(str) {
     return div.innerHTML;
 }
 
-document.getElementById('btn-export-full-bom').addEventListener('click', () => {
-    downloadText('bom.txt', app.fullBomText);
-    showToast('Разузловка сохранена', 'success');
-});
+

@@ -9,8 +9,14 @@ function renderCraftsTable() {
     const filterCat = loadCategoryFilter();
     const visibleCrafts = getCraftsByCategory(app.crafts, filterCat);
 
+    const searchTerm = (document.getElementById('search-crafts')?.value || '').toLowerCase();
+
     for (let i = 0; i < visibleCrafts.length; i++) {
         const craft = visibleCrafts[i];
+        // Поиск
+        if (searchTerm && !craft.name.toLowerCase().includes(searchTerm)) {
+            continue;
+        }
         // Находим оригинальный индекс
         const origIndex = app.crafts.indexOf(craft);
         const tr = document.createElement('tr');
@@ -118,7 +124,7 @@ function renderCraftsTable() {
 }
 
 function getCraftCost(craft) {
-    const temp = new CompositeResource(craft.name, craft.composition);
+    const temp = new CompositeResource(craft.name, craft.composition, craft.outputQuantity, craft.toll || 0);
     return temp.getCost(app.registry.resources);
 }
 
@@ -131,6 +137,10 @@ function updateTotalCraftCost() {
         } catch (e) {
             // Пропускаем ошибки
         }
+    }
+    // Add tolls
+    for (const craft of app.crafts) {
+        total += craft.toll || 0;
     }
     document.getElementById('total-craft-cost').textContent = 'Итого за все: ' + total.toFixed(2) + ' грш.';
 }
@@ -156,6 +166,10 @@ document.getElementById('category-filter')?.addEventListener('change', (e) => {
     renderCraftsTable();
 });
 
+document.getElementById('search-crafts')?.addEventListener('input', () => {
+    renderCraftsTable();
+});
+
 // ==================== КОРЗИНА МАТЕРИАЛОВ ====================
 
 function toggleCraftInCart(craft, craftIndex) {
@@ -169,6 +183,7 @@ function toggleCraftInCart(craft, craftIndex) {
             quantity: craft.quantity,
             composition: { ...craft.composition },
             outputQuantity: craft.outputQuantity || 1,
+            toll: craft.toll || 0,
             category: craft.category
         });
         showToast('Добавлено в корзину: ' + craft.name, 'success');
@@ -195,9 +210,11 @@ document.getElementById('btn-add-craft').addEventListener('click', () => {
     app.editingCraftIndex = -1;
     app.editingResourceType = null;
     app.currentCompositionOutput = 1;
+    app.currentCompositionToll = 0;
     document.getElementById('modal-composition-title').textContent = 'Новый крафт';
     document.getElementById('comp-name').value = '';
     document.getElementById('comp-output').value = 1;
+    document.getElementById('comp-toll').value = 0;
     document.getElementById('form-group-category').style.display = 'block';
     populateCategorySelect('weapons');
     app.currentCompositionData = {};
@@ -219,9 +236,11 @@ document.getElementById('btn-edit-craft').addEventListener('click', () => {
     app.editingCraftIndex = index;
     app.editingResourceType = null;
     app.currentCompositionOutput = craft.outputQuantity || 1;
+    app.currentCompositionToll = craft.toll || 0;
     document.getElementById('modal-composition-title').textContent = 'Редактировать: ' + craft.name;
     document.getElementById('comp-name').value = craft.name;
     document.getElementById('comp-output').value = app.currentCompositionOutput;
+    document.getElementById('comp-toll').value = app.currentCompositionToll;
     document.getElementById('form-group-category').style.display = 'block';
     populateCategorySelect(craft.category);
     app.currentCompositionData = { ...craft.composition };

@@ -53,10 +53,11 @@ class BasicResource extends Resource {
 }
 
 class CompositeResource extends Resource {
-    constructor(name, composition = {}, outputQuantity = 1) {
+    constructor(name, composition = {}, outputQuantity = 1, toll = 0) {
         super(name);
         this.composition = composition;
         this.outputQuantity = outputQuantity;
+        this.toll = toll;
         this.type = 'composite';
     }
 
@@ -89,7 +90,7 @@ class CompositeResource extends Resource {
         }
 
         _visited.delete(this.name);
-        return totalCost / this.outputQuantity;
+        return (totalCost + this.toll) / this.outputQuantity;
     }
 
     getBom(registry, multiplier = 1.0) {
@@ -108,12 +109,13 @@ class CompositeResource extends Resource {
         return {
             type: 'composite',
             composition: this.composition,
-            output_quantity: this.outputQuantity
+            output_quantity: this.outputQuantity,
+            toll: this.toll
         };
     }
 
     static fromJSON(name, data) {
-        return new CompositeResource(name, data.composition, data.output_quantity || 1);
+        return new CompositeResource(name, data.composition, data.output_quantity || 1, data.toll || 0);
     }
 }
 

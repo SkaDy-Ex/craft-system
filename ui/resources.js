@@ -97,6 +97,8 @@ document.getElementById('btn-add-composite').addEventListener('click', () => {
     document.getElementById('modal-composition-title').textContent = 'Новый составной ресурс';
     document.getElementById('comp-name').value = '';
     document.getElementById('comp-output').value = 1;
+    document.getElementById('comp-toll').value = 0;
+    document.getElementById('form-group-category').style.display = 'none';
     renderCompositionTable();
     updateCostPreview();
     showModal('modal-composition');
@@ -125,9 +127,12 @@ document.getElementById('btn-edit-resource').addEventListener('click', () => {
         app.editingResourceType = 'composite';
         app.currentCompositionData = { ...res.composition };
         app.currentCompositionOutput = res.outputQuantity || 1;
+        app.currentCompositionToll = res.toll || 0;
         document.getElementById('modal-composition-title').textContent = 'Редактировать: ' + name;
         document.getElementById('comp-name').value = name;
         document.getElementById('comp-output').value = app.currentCompositionOutput;
+        document.getElementById('comp-toll').value = app.currentCompositionToll;
+        document.getElementById('form-group-category').style.display = 'none';
         renderCompositionTable();
         updateCostPreview();
         showModal('modal-composition');
@@ -275,7 +280,8 @@ document.getElementById('composition-tbody').addEventListener('click', (e) => {
 function updateCostPreview() {
     const el = document.getElementById('comp-cost-preview');
     try {
-        const temp = new CompositeResource('preview', app.currentCompositionData);
+        const toll = parseFloat(document.getElementById('comp-toll').value) || 0;
+        const temp = new CompositeResource('preview', app.currentCompositionData, 1, toll);
         const cost = temp.getCost(app.registry.resources);
         el.textContent = 'Расчётная стоимость: ' + cost.toFixed(2) + ' грш.';
         el.style.color = '';
@@ -304,9 +310,10 @@ document.getElementById('form-composition').addEventListener('submit', (e) => {
         }
 
         const outputQty = parseInt(document.getElementById('comp-output').value) || 1;
+        const toll = parseFloat(document.getElementById('comp-toll').value) || 0;
 
         try {
-            app.registry.addOrUpdate(new CompositeResource(name, { ...app.currentCompositionData }, outputQty));
+            app.registry.addOrUpdate(new CompositeResource(name, { ...app.currentCompositionData }, outputQty, toll));
             renderResourcesTable();
             hideModal('modal-composition');
             showToast('Ресурс сохранён', 'success');
@@ -322,6 +329,7 @@ document.getElementById('form-composition').addEventListener('submit', (e) => {
     // === КРАФТ ===
     else {
         const outputQty = parseInt(document.getElementById('comp-output').value) || 1;
+        const toll = parseFloat(document.getElementById('comp-toll').value) || 0;
         const category = document.getElementById('comp-category')?.value || 'other';
 
         if (app.editingCraftIndex === -1) {
@@ -335,6 +343,7 @@ document.getElementById('form-composition').addEventListener('submit', (e) => {
             app.crafts[app.editingCraftIndex].name = name;
             app.crafts[app.editingCraftIndex].composition = { ...app.currentCompositionData };
             app.crafts[app.editingCraftIndex].outputQuantity = outputQty;
+            app.crafts[app.editingCraftIndex].toll = toll;
             app.crafts[app.editingCraftIndex].category = category;
         } else {
             app.crafts.push({
@@ -342,6 +351,7 @@ document.getElementById('form-composition').addEventListener('submit', (e) => {
                 quantity: 1,
                 composition: { ...app.currentCompositionData },
                 outputQuantity: outputQty,
+                toll: toll,
                 category: category
             });
         }

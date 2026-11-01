@@ -6,9 +6,13 @@
 const CRAFT_CATEGORIES = [
     { id: 'weapons', label: '⚔️ Оружие' },
     { id: 'armor', label: '🛡️ Броня' },
-    { id: 'materials', label: '🔧 Материалы' },
-    { id: 'tools', label: '🔨 Инструменты' },
-    { id: 'other', label: '📦 Другое' }
+    { id: 'alchemy', label: '⚗️ Алхимия' },
+    { id: 'jewelry', label: '💎 Ювелирка' },
+    { id: 'ranged', label: '🏹 Лучное' },
+    { id: 'clothing', label: '👕 Одежда' },
+    { id: 'food', label: '🍖 Еда' },
+    { id: 'brewing', label: '🍺 Пивоварение' },
+    { id: 'carpentry', label: '🪚 Столярка' }
 ];
 
 function getCategoryLabel(categoryId) {
@@ -55,6 +59,7 @@ function importCraftsData(data) {
         quantity: c.quantity || 1,
         composition: c.composition || {},
         outputQuantity: c.outputQuantity || 1,
+        toll: c.toll || 0,
         category: c.category || 'other'
     }));
     return { registry, crafts };

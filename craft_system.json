@@ -1,14 +1,14 @@
 {
     "resources": {
+        "Шкура": {
+            "type": "basic",
+            "unit": "шт",
+            "cost_per_unit": 15
+        },
         "Уголь": {
             "type": "basic",
             "unit": "шт",
             "cost_per_unit": 4
-        },
-        "Шкура": {
-            "type": "basic",
-            "unit": "шт",
-            "cost_per_unit": 25
         },
         "Железная руда": {
             "type": "basic",
@@ -30,7 +30,7 @@
             "unit": "шт",
             "cost_per_unit": 25
         },
-        "Серебрянная руда": {
+        "Серебряная руда": {
             "type": "basic",
             "unit": "шт",
             "cost_per_unit": 35
@@ -40,36 +40,50 @@
             "unit": "шт",
             "cost_per_unit": 30
         },
-        "Сталь": {
-            "type": "composite",
-            "composition": {
-                "Уголь": 2,
-                "Железная руда": 3
-            },
-            "output_quantity": 1
+        "Рога": {
+            "type": "basic",
+            "unit": "шт",
+            "cost_per_unit": 1
         },
-        "Свинная шкура": {
-            "type": "composite",
-            "composition": {
-                "Шкура": 1
-            },
-            "output_quantity": 2
+        "Сосновая смола": {
+            "type": "basic",
+            "unit": "шт",
+            "cost_per_unit": 10
         },
-        "Железо (Iron)": {
-            "type": "composite",
-            "composition": {
-                "Уголь": 1,
-                "Железная руда": 2
-            },
-            "output_quantity": 1
-        },
-        "Металлолом": {
+        "Железный лом": {
             "type": "composite",
             "composition": {
                 "Уголь": 1,
                 "Железная руда": 1
             },
-            "output_quantity": 1
+            "output_quantity": 3,
+            "toll": 0
+        },
+        "Железо": {
+            "type": "composite",
+            "composition": {
+                "Уголь": 1,
+                "Железная руда": 2
+            },
+            "output_quantity": 3,
+            "toll": 0
+        },
+        "Крепёж": {
+            "type": "composite",
+            "composition": {
+                "Уголь": 1,
+                "Железо": 1
+            },
+            "output_quantity": 5,
+            "toll": 0
+        },
+        "Оленьи рога": {
+            "type": "composite",
+            "composition": {
+                "Рога": 1
+            },
+            "output_quantity": 2,
+            "toll": 0
         },
         "Медь": {
             "type": "composite",
@@ -77,7 +91,80 @@
                 "Уголь": 1,
                 "Медная руда": 2
             },
-            "output_quantity": 1
+            "output_quantity": 1,
+            "toll": 0
+        },
+        "Обычная гарда": {
+            "type": "composite",
+            "composition": {
+                "Железо": 1,
+                "Железный лом": 1
+            },
+            "output_quantity": 1,
+            "toll": 0
+        },
+        "Плоское навершие меча": {
+            "type": "composite",
+            "composition": {
+                "Железо": 1
+            },
+            "output_quantity": 2,
+            "toll": 0
+        },
+        "Сталь": {
+            "type": "composite",
+            "composition": {
+                "Уголь": 2,
+                "Железная руда": 3
+            },
+            "output_quantity": 2,
+            "toll": 0
+        },
+        "Прямая гарда": {
+            "type": "composite",
+            "composition": {
+                "Железо": 1,
+                "Железный лом": 1
+            },
+            "output_quantity": 1,
+            "toll": 0
+        },
+        "Восьмигранное навершие меча": {
+            "type": "composite",
+            "composition": {
+                "Железо": 1,
+                "Медь": 1
+            },
+            "output_quantity": 2,
+            "toll": 0
+        },
+        "Гарда": {
+            "type": "composite",
+            "composition": {
+                "Сталь": 1,
+                "Железо": 1
+            },
+            "output_quantity": 2,
+            "toll": 0
+        },
+        "Грушевидное навершие меча": {
+            "type": "composite",
+            "composition": {
+                "Железо": 1,
+                "Медь": 1
+            },
+            "output_quantity": 2,
+            "toll": 0
+        },
+        "Толедская сталь": {
+            "type": "composite",
+            "composition": {
+                "Франкфуртская сталь": 2,
+                "Серебряная руда": 1,
+                "Уголь": 2
+            },
+            "output_quantity": 2,
+            "toll": 0
         },
         "Франкфуртская сталь": {
             "type": "composite",
@@ -86,77 +173,88 @@
                 "Уголь": 2,
                 "Брёвна": 1
             },
-            "output_quantity": 1
+            "output_quantity": 2,
+            "toll": 0
         },
-        "Крепёж": {
+        "Укрепленная гарда": {
             "type": "composite",
             "composition": {
-                "Железо (Iron)": 1,
-                "Уголь": 1
+                "Сталь": 1,
+                "Железо": 1
             },
-            "output_quantity": 1
+            "output_quantity": 2,
+            "toll": 0
         },
-        "Наконечник меча (Ур. 2)": {
+        "Украшенное навершие меча": {
             "type": "composite",
             "composition": {
-                "Железо (Iron)": 1
+                "Медь": 1
             },
-            "output_quantity": 1
+            "output_quantity": 2,
+            "toll": 0
         },
-        "Гарда меча круглая (Ур. 2)": {
+        "Листовая сталь": {
             "type": "composite",
             "composition": {
-                "Железо (Iron)": 1,
-                "Металлолом": 1
+                "Толедская сталь": 2,
+                "Уголь": 3
             },
-            "output_quantity": 1
-        },
-        "Гарда меча прямая (Ур. 3)": {
-            "type": "composite",
-            "composition": {
-                "Железо (Iron)": 1,
-                "Металлолом": 1
-            },
-            "output_quantity": 1
-        },
-        "Толедская сталь": {
-            "type": "composite",
-            "composition": {
-                "Франкфуртская сталь": 2,
-                "Серебрянная руда": 1,
-                "Уголь": 2
-            },
-            "output_quantity": 1
+            "output_quantity": 2,
+            "toll": 0
         },
         "Кожа": {
             "type": "composite",
             "composition": {
                 "Шкура": 1
             },
-            "output_quantity": 2
+            "output_quantity": 2,
+            "toll": 0
         },
-        "Toledo Steel": {
+        "Свиная шкура": {
             "type": "composite",
             "composition": {
-                "Франкфуртская сталь": 2,
-                "Серебрянная руда": 1,
-                "Уголь": 2
+                "Шкура": 1
             },
-            "output_quantity": 1
+            "output_quantity": 2,
+            "toll": 0
+        },
+        "Коровья шкура": {
+            "type": "composite",
+            "composition": {
+                "Шкура": 2
+            },
+            "output_quantity": 1,
+            "toll": 0
+        },
+        "Древки": {
+            "type": "composite",
+            "composition": {
+                "Брёвна": 2,
+                "Сосновая смола": 1
+            },
+            "output_quantity": 2,
+            "toll": 0
         }
     },
     "crafts": [
         {
-            "name": "Меч Милитари",
+            "name": "Широкий длинный меч",
             "quantity": 1,
             "composition": {
-                "Гарда меча круглая (Ур. 2)": 1,
-                "Свинная шкура": 1,
-                "Наконечник меча (Ур. 2)": 1,
-                "Сталь": 1,
-                "Железо (Iron)": 1
+                "Коровья шкура": 1,
+                "Грушевидное навершие меча": 1,
+                "Обычная гарда": 1,
+                "Франкфуртская сталь": 3,
+                "Железо": 2,
+                "Медная руда": 2,
+                "Сталь": 8,
+                "Уголь": 22,
+                "Шкура": 3,
+                "Брёвна": 8,
+                "Кожа": 3
             },
             "outputQuantity": 1,
+            "toll": 0,
             "category": "weapons"
         },
         {
@@ -164,10 +262,11 @@
             "quantity": 1,
             "composition": {
                 "Сталь": 2,
-                "Металлолом": 1,
+                "Железный лом": 1,
                 "Крепёж": 1
             },
             "outputQuantity": 1,
+            "toll": 0,
             "category": "weapons"
         },
         {
@@ -181,6 +280,7 @@
                 "Шкура": 1
             },
             "outputQuantity": 1,
+            "toll": 0,
             "category": "weapons"
         },
         {
@@ -201,7 +301,7 @@
             "quantity": 1,
             "composition": {
                 "Крепёж": 1,
-                "Железо (Iron)": 1,
+                "Железо": 1,
                 "Франкфуртская сталь": 1,
                 "Медная руда": 1,
                 "Сталь": 3,
@@ -210,32 +310,35 @@
                 "Брёвна": 3
             },
             "outputQuantity": 1,
+            "toll": 0,
             "category": "weapons"
         },
         {
             "name": "Подковы гончие",
             "quantity": 1,
             "composition": {
-                "Железо (Iron)": 2,
+                "Железо": 2,
                 "Франкфуртская сталь": 1,
                 "Уголь": 1
             },
             "outputQuantity": 1,
-            "category": "tools"
+            "toll": 0,
+            "category": "carpentry"
         },
         {
             "name": "Призрачные подковы",
             "quantity": 1,
             "composition": {
                 "Уголь": 8,
-                "Железо (Iron)": 2,
-                "Toledo Steel": 1,
+                "Железо": 2,
+                "Толедская сталь": 1,
                 "Медная руда": 1,
                 "Сталь": 1,
                 "Брёвна": 1
             },
             "outputQuantity": 1,
-            "category": "tools"
+            "toll": 0,
+            "category": "carpentry"
         },
         {
             "name": "Basilard",
@@ -247,10 +350,74 @@
                 "Шкура": 4,
                 "Брёвна": 5,
                 "Сталь": 5,
-                "Toledo Steel": 1,
+                "Толедская сталь": 1,
                 "Медь": 1,
                 "Экзотическое дерево": 1,
-                "Железо (Iron)": 1
+                "Железо": 1
+            },
+            "outputQuantity": 1,
+            "toll": 0,
+            "category": "weapons"
+        },
+        {
+            "name": "Рыцарский меч",
+            "quantity": 1,
+            "composition": {
+                "Плоское навершие меча": 1,
+                "Укрепленная гарда": 1,
+                "Франкфуртская сталь": 2,
+                "Железный лом": 2,
+                "Коровья шкура": 1,
+                "Медная руда": 2,
+                "Сталь": 8,
+                "Уголь": 24,
+                "Шкура": 2,
+                "Брёвна": 8,
+                "Кожа": 3
+            },
+            "outputQuantity": 1,
+            "toll": 0,
+            "category": "weapons"
+        },
+        {
+            "name": "Рыцарский щит",
+            "quantity": 1,
+            "composition": {
+                "Брёвна": 4,
+                "Шкура": 1,
+                "Сталь": 1,
+                "Кожа": 1
+            },
+            "outputQuantity": 1,
+            "toll": 0,
+            "category": "armor"
+        },
+        {
+            "name": "Гизарма",
+            "quantity": 4,
+            "composition": {
+                "Сталь": 4,
+                "Уголь": 11,
+                "Брёвна": 2,
+                "Шкура": 1,
+                "Древки": 2
+            },
+            "outputQuantity": 1,
+            "toll": 0,
+            "category": "weapons"
+        }
+    ],
+    "materialsCrafts": [
+        {
+            "name": "Гизарма",
+            "toll": 0,
+            "quantity": 4,
+            "composition": {
+                "Сталь": 4,
+                "Уголь": 11,
+                "Брёвна": 2,
+                "Шкура": 1,
+                "Древки": 2
             },
             "outputQuantity": 1,
             "category": "weapons"

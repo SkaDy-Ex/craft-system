@@ -8,10 +8,12 @@ const app = {
     registry: new ResourceRegistry(),
     crafts: [],
     materialsCrafts: [], // корзина материалов
+    materialsInStock: {}, // наличие ресурсов
     editingResourceName: null,
     editingResourceType: null,
     currentCompositionData: {},
     currentCompositionOutput: 1,
+    currentCompositionToll: 0,
     bomTreeResourceName: null,
     fullBomText: '',
     fullBomTitle: ''
@@ -27,6 +29,7 @@ function loadData() {
         app.registry = imported.registry;
         app.crafts = imported.crafts;
         app.materialsCrafts = saved.materialsCrafts || [];
+        app.materialsInStock = {};
         renderResourcesTable();
         renderCraftsTable();
         renderMaterialsTable();
