@@ -3,7 +3,7 @@
         "Шкура": {
             "type": "basic",
             "unit": "шт",
-            "cost_per_unit": 15
+            "cost_per_unit": 12
         },
         "Уголь": {
             "type": "basic",
@@ -13,7 +13,7 @@
         "Железная руда": {
             "type": "basic",
             "unit": "шт",
-            "cost_per_unit": 6
+            "cost_per_unit": 8
         },
         "Брёвна": {
             "type": "basic",
@@ -23,17 +23,17 @@
         "Медная руда": {
             "type": "basic",
             "unit": "шт",
-            "cost_per_unit": 10
+            "cost_per_unit": 15
         },
         "Золотая руда": {
             "type": "basic",
             "unit": "шт",
-            "cost_per_unit": 25
+            "cost_per_unit": 15
         },
         "Серебряная руда": {
             "type": "basic",
             "unit": "шт",
-            "cost_per_unit": 35
+            "cost_per_unit": 50
         },
         "Экзотическое дерево": {
             "type": "basic",
@@ -43,12 +43,45 @@
         "Рога": {
             "type": "basic",
             "unit": "шт",
-            "cost_per_unit": 1
+            "cost_per_unit": 15
         },
         "Сосновая смола": {
             "type": "basic",
             "unit": "шт",
             "cost_per_unit": 10
+        },
+        "Крапива": {
+            "type": "basic",
+            "unit": "шт",
+            "cost_per_unit": 4
+        },
+        "Белладонна": {
+            "type": "basic",
+            "unit": "шт",
+            "cost_per_unit": 5
+        },
+        "Самородок чистого серебра": {
+            "type": "basic",
+            "unit": "шт",
+            "cost_per_unit": 700
+        },
+        "Чистое серебро": {
+            "type": "composite",
+            "composition": {
+                "Серебряная руда": 2,
+                "Уголь": 1
+            },
+            "output_quantity": 1,
+            "toll": 0
+        },
+        "Оленья кожа": {
+            "type": "composite",
+            "composition": {
+                "Шкура": 2,
+                "Сосновая смола": 1
+            },
+            "output_quantity": 1,
+            "toll": 0
         },
         "Железный лом": {
             "type": "composite",
@@ -238,7 +271,7 @@
     },
     "crafts": [
         {
-            "name": "Широкий длинный меч",
+            "name": "(7) Широкий длинный меч",
             "quantity": 1,
             "composition": {
                 "Коровья шкура": 1,
@@ -254,37 +287,11 @@
                 "Кожа": 3
             },
             "outputQuantity": 1,
-            "toll": 0,
+            "toll": 219,
             "category": "weapons"
         },
         {
-            "name": "Клинок охотничий",
-            "quantity": 1,
-            "composition": {
-                "Сталь": 2,
-                "Железный лом": 1,
-                "Крепёж": 1
-            },
-            "outputQuantity": 1,
-            "toll": 0,
-            "category": "weapons"
-        },
-        {
-            "name": "Меч Болеслава",
-            "quantity": 1,
-            "composition": {
-                "Медная руда": 1,
-                "Сталь": 7,
-                "Уголь": 11,
-                "Брёвна": 3,
-                "Шкура": 1
-            },
-            "outputQuantity": 1,
-            "toll": 0,
-            "category": "weapons"
-        },
-        {
-            "name": "Меч Оппортунити",
+            "name": "(4) Оппортунист",
             "quantity": 1,
             "composition": {
                 "Медная руда": 1,
@@ -294,27 +301,11 @@
                 "Брёвна": 2
             },
             "outputQuantity": 1,
+            "toll": 14,
             "category": "weapons"
         },
         {
-            "name": "Куман Фокос",
-            "quantity": 1,
-            "composition": {
-                "Крепёж": 1,
-                "Железо": 1,
-                "Франкфуртская сталь": 1,
-                "Медная руда": 1,
-                "Сталь": 3,
-                "Уголь": 11,
-                "Шкура": 1,
-                "Брёвна": 3
-            },
-            "outputQuantity": 1,
-            "toll": 0,
-            "category": "weapons"
-        },
-        {
-            "name": "Подковы гончие",
+            "name": "(4) Подковы для скачек",
             "quantity": 1,
             "composition": {
                 "Железо": 2,
@@ -322,11 +313,11 @@
                 "Уголь": 1
             },
             "outputQuantity": 1,
-            "toll": 0,
-            "category": "carpentry"
+            "toll": 4,
+            "category": "horse_gear"
         },
         {
-            "name": "Призрачные подковы",
+            "name": "(6) Призрачные подковы",
             "quantity": 1,
             "composition": {
                 "Уголь": 8,
@@ -337,30 +328,31 @@
                 "Брёвна": 1
             },
             "outputQuantity": 1,
-            "toll": 0,
-            "category": "carpentry"
+            "toll": 12,
+            "category": "horse_gear"
         },
         {
-            "name": "Basilard",
+            "name": "(6) Баселард",
             "quantity": 1,
             "composition": {
                 "Уголь": 19,
                 "Крепёж": 1,
                 "Медная руда": 2,
-                "Шкура": 4,
+                "Шкура": 2,
                 "Брёвна": 5,
                 "Сталь": 5,
                 "Толедская сталь": 1,
                 "Медь": 1,
                 "Экзотическое дерево": 1,
-                "Железо": 1
+                "Железо": 1,
+                "Кожа": 2
             },
             "outputQuantity": 1,
-            "toll": 0,
+            "toll": 38,
             "category": "weapons"
         },
         {
-            "name": "Рыцарский меч",
+            "name": "(7) Рыцарский меч",
             "quantity": 1,
             "composition": {
                 "Плоское навершие меча": 1,
@@ -376,11 +368,11 @@
                 "Кожа": 3
             },
             "outputQuantity": 1,
-            "toll": 0,
+            "toll": 153,
             "category": "weapons"
         },
         {
-            "name": "Рыцарский щит",
+            "name": "(6) Рыцарский щит",
             "quantity": 1,
             "composition": {
                 "Брёвна": 4,
@@ -389,12 +381,12 @@
                 "Кожа": 1
             },
             "outputQuantity": 1,
-            "toll": 0,
-            "category": "armor"
+            "toll": 4,
+            "category": "shields"
         },
         {
-            "name": "Гизарма",
-            "quantity": 4,
+            "name": "(7) Гизарма",
+            "quantity": 1,
             "composition": {
                 "Сталь": 4,
                 "Уголь": 11,
@@ -403,24 +395,332 @@
                 "Древки": 2
             },
             "outputQuantity": 1,
-            "toll": 0,
+            "toll": 13,
             "category": "weapons"
+        },
+        {
+            "name": "(8) Меч пана Валентина",
+            "quantity": 1,
+            "composition": {
+                "Медь": 1,
+                "Прямая гарда": 1,
+                "Коровья шкура": 1,
+                "Плоское навершие меча": 1,
+                "Франкфуртская сталь": 1,
+                "Железный лом": 1,
+                "Серебряная руда": 1,
+                "Сталь": 33,
+                "Кожа": 13,
+                "Уголь": 27,
+                "Самородок чистого серебра": 1
+            },
+            "outputQuantity": 1,
+            "toll": 160,
+            "category": "weapons"
+        },
+        {
+            "name": "(2) Рыцарский длинный меч",
+            "quantity": 1,
+            "composition": {
+                "Свиная шкура": 1,
+                "Плоское навершие меча": 1,
+                "Прямая гарда": 1,
+                "Сталь": 3,
+                "Железный лом": 2
+            },
+            "outputQuantity": 1,
+            "toll": 1,
+            "category": "weapons"
+        },
+        {
+            "name": "(2) Фальшион",
+            "quantity": 1,
+            "composition": {
+                "Железо": 1,
+                "Франкфуртская сталь": 3,
+                "Плоское навершие меча": 1
+            },
+            "outputQuantity": 1,
+            "toll": 5,
+            "category": "weapons"
+        },
+        {
+            "name": "(4) Меч Болеслава Бавора",
+            "quantity": 1,
+            "composition": {
+                "Медная руда": 1,
+                "Сталь": 7,
+                "Уголь": 11,
+                "Брёвна": 3,
+                "Шкура": 1
+            },
+            "outputQuantity": 1,
+            "toll": 18,
+            "category": "weapons"
+        },
+        {
+            "name": "(3) Глефа",
+            "quantity": 1,
+            "composition": {
+                "Железная руда": 4,
+                "Уголь": 5,
+                "Брёвна": 1
+            },
+            "outputQuantity": 1,
+            "toll": 4,
+            "category": "weapons"
+        },
+        {
+            "name": "(3) Древковый топор Брунцвика",
+            "quantity": 1,
+            "composition": {
+                "Крепёж": 1,
+                "Железо": 3,
+                "Франкфуртская сталь": 1,
+                "Уголь": 5,
+                "Брёвна": 1
+            },
+            "outputQuantity": 1,
+            "toll": 6,
+            "category": "weapons"
+        },
+        {
+            "name": "(2) Лёгкая булава",
+            "quantity": 1,
+            "composition": {
+                "Железная руда": 5,
+                "Уголь": 6,
+                "Брёвна": 1
+            },
+            "outputQuantity": 1,
+            "toll": 15,
+            "category": "weapons"
+        },
+        {
+            "name": "(7) Меч пана Бергова",
+            "quantity": 1,
+            "composition": {
+                "Шкура": 3,
+                "Уголь": 22,
+                "Сталь": 16,
+                "Брёвна": 8,
+                "Медная руда": 2,
+                "Кожа": 3
+            },
+            "outputQuantity": 1,
+            "toll": 142,
+            "category": "weapons"
+        },
+        {
+            "name": "(4) Бухарская булава",
+            "quantity": 1,
+            "composition": {
+                "Медная руда": 1,
+                "Шкура": 1,
+                "Уголь": 9,
+                "Сталь": 4,
+                "Брёвна": 2
+            },
+            "outputQuantity": 1,
+            "toll": 12,
+            "category": "weapons"
+        },
+        {
+            "name": "(8) Дуэльный длинный меч",
+            "quantity": 1,
+            "composition": {
+                "Оленья кожа": 1,
+                "Гарда": 1,
+                "Грушевидное навершие меча": 1,
+                "Толедская сталь": 3,
+                "Железо": 2,
+                "Серебряная руда": 1,
+                "Сталь": 33,
+                "Кожа": 13,
+                "Уголь": 24,
+                "Самородок чистого серебра": 1
+            },
+            "outputQuantity": 1,
+            "toll": 310,
+            "category": "weapons"
+        },
+        {
+            "name": "(8) Молот \"Троллья погибель\"",
+            "quantity": 1,
+            "composition": {
+                "Шкура": 4,
+                "Сталь": 30,
+                "Серебряная руда": 1,
+                "Сосновая смола": 7,
+                "Древки": 6,
+                "Самородок чистого серебра": 1
+            },
+            "outputQuantity": 1,
+            "toll": 64,
+            "category": "weapons"
+        },
+        {
+            "name": "(5) Боевой длинный меч",
+            "quantity": 1,
+            "composition": {
+                "Коровья шкура": 1,
+                "Восьмигранное навершие меча": 1,
+                "Гарда": 1,
+                "Франкфуртская сталь": 3,
+                "Железо": 3,
+                "Медная руда": 2,
+                "Сталь": 3,
+                "Уголь": 10,
+                "Шкура": 1,
+                "Брёвна": 2,
+                "Кожа": 1
+            },
+            "outputQuantity": 1,
+            "toll": 56,
+            "category": "weapons"
+        },
+        {
+            "name": "(2) Вилы",
+            "quantity": 1,
+            "composition": {
+                "Уголь": 2
+            },
+            "outputQuantity": 1,
+            "toll": 1,
+            "category": "tools"
+        },
+        {
+            "name": "(2) Кинжал",
+            "quantity": 1,
+            "composition": {
+                "Уголь": 1,
+                "Железная руда": 1
+            },
+            "outputQuantity": 1,
+            "toll": 0,
+            "category": "tools"
+        },
+        {
+            "name": "(1) Боевой меч",
+            "quantity": 1,
+            "composition": {
+                "Свиная шкура": 1,
+                "Обычная гарда": 1,
+                "Сталь": 1,
+                "Железо": 1,
+                "Плоское навершие меча": 1
+            },
+            "outputQuantity": 1,
+            "toll": 6,
+            "category": "weapons"
+        },
+        {
+            "name": "(1) Охотничий тесак",
+            "quantity": 1,
+            "composition": {
+                "Сталь": 1,
+                "Железный лом": 1,
+                "Уголь": 1
+            },
+            "outputQuantity": 1,
+            "toll": 3,
+            "category": "tools"
+        },
+        {
+            "name": "(1) Тренировочный меч",
+            "quantity": 1,
+            "composition": {
+                "Уголь": 1
+            },
+            "outputQuantity": 1,
+            "toll": 1,
+            "category": "weapons"
+        },
+        {
+            "name": "(1) Учебный длинный меч",
+            "quantity": 1,
+            "composition": {
+                "Уголь": 1
+            },
+            "outputQuantity": 1,
+            "toll": 1,
+            "category": "weapons"
+        },
+        {
+            "name": "(4) Обычный длинный меч",
+            "quantity": 1,
+            "composition": {
+                "Свиная шкура": 1,
+                "Железо": 2,
+                "Плоское навершие меча": 1,
+                "Обычная гарда": 1,
+                "Медная руда": 1,
+                "Сталь": 5,
+                "Уголь": 10,
+                "Брёвна": 2
+            },
+            "outputQuantity": 1,
+            "toll": 17,
+            "category": "weapons"
+        },
+        {
+            "name": "(5) Палаш",
+            "quantity": 1,
+            "composition": {
+                "Прямая гарда": 1,
+                "Шкура": 1,
+                "Уголь": 12,
+                "Медь": 1,
+                "Коровья шкура": 1,
+                "Франкфуртская сталь": 1,
+                "Сталь": 4,
+                "Брёвна": 3,
+                "Железо": 1,
+                "Медная руда": 1
+            },
+            "outputQuantity": 1,
+            "toll": 38,
+            "category": "weapons"
+        },
+        {
+            "name": "(6) Длинный меч Сухого Черта",
+            "quantity": 1,
+            "composition": {
+                "Шкура": 1,
+                "Уголь": 17,
+                "Медная руда": 2,
+                "Сталь": 11,
+                "Кожа": 2,
+                "Брёвна": 6
+            },
+            "outputQuantity": 1,
+            "toll": 57,
+            "category": "weapons"
+        },
+        {
+            "name": "(1) Рабочий топор",
+            "quantity": 1,
+            "composition": {
+                "Железный лом": 2
+            },
+            "outputQuantity": 1,
+            "toll": 1,
+            "category": "tools"
+        },
+        {
+            "name": "(3) Топор конника",
+            "quantity": 1,
+            "composition": {
+                "Железо": 2,
+                "Франкфуртская сталь": 1,
+                "Крепёж": 1,
+                "Уголь": 12,
+                "Брёвна": 3
+            },
+            "outputQuantity": 1,
+            "toll": 107,
+            "category": "tools"
         }
     ],
-    "materialsCrafts": [
-        {
-            "name": "Гизарма",
-            "toll": 0,
-            "quantity": 4,
-            "composition": {
-                "Сталь": 4,
-                "Уголь": 11,
-                "Брёвна": 2,
-                "Шкура": 1,
-                "Древки": 2
-            },
-            "outputQuantity": 1,
-            "category": "weapons"
-        }
-    ]
+    "materialsCrafts": []
 }

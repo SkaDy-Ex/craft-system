@@ -1,0 +1,129 @@
+jobtool:miner	1 Scrap metal, 1 Iron, 4 coal, 1 logs + 3 gr.	10 s	~0 gr.
+Training bludgeon	1 coal + 1 gr.	10 s	~1 gr.
+Scrap metal ×3	1 iron ore, 1 coal	6 s	~6 gr.
+Fastening material ×5	1 Iron, 1 coal	6 s	~10 gr.
+Farmer Matthew's pitchfork	1 coal + 1 gr.	10 s	~3 gr.
+Training axe	1 coal + 1 gr.	10 s	~3 gr.
+Training longsword (plain)	1 coal + 1 gr.	10 s	~3 gr.
+Staff	1 coal + 1 gr.	10 s	~3 gr.
+Training sword	1 coal + 1 gr.	10 s	~3 gr.
+Iron ×3	2 iron ore, 1 coal + 1 gr.	6 s	~15 gr.
+Torch	1 coal + 1 gr.	10 s	~6 gr.
+Club	1 coal + 1 gr.	10 s	~8 gr.
+Antler shards ×2	1 antlers	6 s	~24 gr.
+Old dagger	1 coal + 1 gr.	10 s	~20 gr.
+Farmer's horseshoes	1 Scrap metal + 1 gr.	10 s	~20 gr.
+Work axe	2 Scrap metal + 1 gr.	10 s	~25 gr.
+Painted pavese 39 variants	1 logs + 1 gr.	10 s	~30 gr.
+Knight's horseshoes	2 Scrap metal + 1 gr.	10 s	~40 gr.
+Training longsword (reinforced)	2 coal + 1 gr.	10 s	~50 gr.
+Homemade hunting sword	2 Scrap metal, 1 Fastening material + 1 gr.	10 s	~50 gr.
+Hunting sword	2 steel, 1 Scrap metal, 1 Fastening material + 2 gr.	10 s	~82 gr.
+Hunting sword (recipe 2)	1 Scrap metal, 1 steel, 3 coal + 3 gr.	10 s	~82 gr.
+Burgher's hunting sword	2 iron ore, 4 coal + 3 gr.	10 s	~214 gr.
+Carpenter's axe	1 Scrap metal, 1 Iron, 4 coal, 1 logs + 3 gr.	10 s	~216 gr.
+Blacksmith's defender	1 Ordinary sword guard, 1 Pig skin, 1 Coin sword pommel, 2 steel, 2 Scrap metal + 1 gr.	10 s	~336 gr.
+Military sword	1 Ordinary sword guard, 1 Pig skin, 1 Coin sword pommel, 1 steel, 1 Iron + 6 gr.	10 s	~367 gr.
+Tournament practice sword	3 iron ore, 5 coal, 1 logs + 16 gr.	10 s	~500 gr.
+Coin sword pommel ×2	1 Iron	7 s	~8 gr.
+Ordinary sword guard	1 Iron, 1 Scrap metal	7 s	~6 gr.
+Dagger	1 iron ore, 1 coal	8 s	~23 gr.
+Brunswick's dagger	1 coal + 1 gr.	12 s	~23 gr.
+Copper	2 copper ore, 1 coal	7 s	~27 gr.
+Spiked horseshoes	1 Scrap metal, 1 coal + 1 gr.	12 s	~45 gr.
+Nobleman's horseshoes	1 Iron + 2 gr.	12 s	~50 gr.
+Pitchfork	2 coal + 1 gr.	12 s	~62 gr.
+Lovarian horseshoes	2 Iron + 2 gr.	12 s	~80 gr.
+Rondel dagger	2 iron ore, 6 coal + 3 gr.	12 s	~250 gr.
+Spiked bludgeon	3 iron ore, 5 coal + 4 gr.	12 s	~291 gr.
+Knight's longsword	1 Pig skin, 1 Coin sword pommel, 1 Straight sword guard, 3 steel, 2 Scrap metal + 1 gr.	12 s	~331 gr.
+Cuman shashka	1 Iron, 2 Frankfurt steel, 1 Fastening material, 1 Copper + 1 gr.	12 s	~336 gr.
+Competition sword	2 steel, 1 Scrap metal, 1 Fastening material, 5 coal, 1 logs + 6 gr.	12 s	~336 gr.
+Jimbo's marotte	4 iron ore, 5 coal, 1 logs + 4 gr.	12 s	~365 gr.
+Bearded axe	1 Scrap metal, 1 steel, 9 coal, 2 logs + 8 gr.	12 s	~485 gr.
+Falchion	1 Iron, 3 Frankfurt steel, 1 Coin sword pommel + 5 gr.	12 s	~486 gr.
+Light mace	5 iron ore, 6 coal, 1 logs + 15 gr.	12 s	~574 gr.
+Morgenstern	6 iron ore, 7 coal, 1 logs + 26 gr.	12 s	~828 gr.
+Straight sword guard	1 Iron, 1 Scrap metal	8 s	~6 gr.
+Heater shield 34 variants	3 logs + 1 gr.	14 s	~62 gr.
+Billhook	3 iron ore, 5 coal + 4 gr.	14 s	~279 gr.
+Glaive	4 iron ore, 5 coal, 1 logs + 4 gr.	14 s	~354 gr.
+Common war hammer	8 iron ore, 10 coal, 2 logs + 30 gr.	14 s	~447 gr.
+Brunswick's poleaxe	1 Fastening material, 3 Iron, 1 Frankfurt steel, 5 coal, 1 logs + 6 gr.	14 s	~478 gr.
+Common sabre	1 Fastening material, 1 Scrap metal, 2 Frankfurt steel, 12 coal, 2 logs + 10 gr.	14 s	~773 gr.
+Zizka's mace	7 iron ore, 10 coal, 1 logs + 22 gr.	14 s	~868 gr.
+Raborsch butcher's axe	8 iron ore, 10 coal, 1 logs + 22 gr.	14 s	~904 gr.
+Dagger mace	7 iron ore, 10 coal, 1 logs + 26 gr.	14 s	~942 gr.
+Broad axe	2 Iron, 1 steel, 1 Fastening material, 13 coal, 2 logs + 36 gr.	14 s	~1073 gr.
+Common mace	8 iron ore, 9 coal, 2 logs + 36 gr.	14 s	~1139 gr.
+Bailiff's mace	8 iron ore, 9 coal, 2 logs + 36 gr.	14 s	~1140 gr.
+Godwin's longsword	8 iron ore, 10 coal, 1 logs + 50 gr.	14 s	~1349 gr.
+Horseman's pick	2 Iron, 1 Frankfurt steel, 1 Fastening material, 12 coal, 3 logs + 107 gr.	14 s	~2218 gr.
+Pear sword pommel ×2	1 Iron, 1 Copper	9 s	~16 gr.
+Horned sword guard ×2	1 steel, 1 Iron	9 s	~16 gr.
+Eight-sided sword pommel ×2	1 Iron, 1 Copper	9 s	~20 gr.
+Frankfurt steel ×2	2 steel, 2 coal, 1 logs	9 s	~40 gr.
+Toledo steel ×2	2 Frankfurt steel, 1 silver ore, 2 coal	9 s	~70 gr.
+Racing horseshoes	2 Iron, 1 Frankfurt steel, 1 coal + 4 gr.	16 s	~150 gr.
+Shell hunting sword	2 Toledo steel, 1 Fastening material, 2 Antler shards, 1 Iron + 1 gr.	16 s	~583 gr.
+Rider's war hammer	5 steel, 9 coal, 2 logs, 1 hides + 12 gr.	16 s	~918 gr.
+Opportunity	1 copper ore, 5 steel, 9 coal, 2 logs, 1 hides + 14 gr.	16 s	~963 gr.
+Buchar mace	1 copper ore, 4 steel, 9 coal, 2 logs, 1 hides + 12 gr.	16 s	~980 gr.
+Cuman fokos	1 Fastening material, 1 Iron, 1 Frankfurt steel, 1 copper ore, 3 steel, 11 coal, 1 hides, 3 logs + 15 gr.	16 s	~1121 gr.
+Common longsword	2 Iron, 1 Coin sword pommel, 1 Ordinary sword guard, 1 Pig skin, 5 steel, 1 copper ore, 10 coal, 2 logs + 17 gr.	16 s	~1239 gr.
+Boleslav Bavor's sword	1 copper ore, 7 steel, 11 coal, 3 logs, 1 hides + 18 gr.	16 s	~1253 gr.
+Flanged mace	1 copper ore, 7 steel, 12 coal, 3 logs, 1 hides + 18 gr.	16 s	~1419 gr.
+Reinforced sword guard ×2	1 steel, 1 Iron	10 s	~16 gr.
+Cuman shield 17 variants	4 logs, 1 hides, 1 leather + 3 gr.	18 s	~121 gr.
+Skalitz knight's shield 2 variants	3 logs, 1 hides, 1 steel, 1 leather + 4 gr.	18 s	~136 gr.
+Bardiche	3 steel, 9 coal, 1 logs, 1 hafts + 8 gr.	18 s	~649 gr.
+Voulge	3 steel, 9 coal, 1 logs, 1 hafts + 8 gr.	18 s	~649 gr.
+Noble's hunting sword	1 Copper, 2 Toledo steel, 2 Iron, 1 Fastening material, 1 Exotic wood, 1 leather	18 s	~705 gr.
+Heavy mace	1 copper ore, 5 steel, 13 coal, 3 logs, 1 hides, 1 hafts + 19 gr.	18 s	~1325 gr.
+Knight's war hammer	1 copper ore, 6 steel, 13 coal, 3 logs, 1 hides, 1 hafts + 20 gr.	18 s	~1428 gr.
+War hammer	1 copper ore, 6 steel, 13 coal, 4 logs, 1 hides, 1 hafts + 21 gr.	18 s	~1482 gr.
+Calvaria axe	2 Coloured gold, 1 Tincal, 2 Dogfish skin, 1 Exotic wood, 1 Toledo steel, 1 Sheet steel, 1 copper ore, 1 hafts	18 s	~1527 gr.
+Broadsword	1 Straight sword guard, 1 Copper, 1 Cow skin, 1 Coin sword pommel, 1 Frankfurt steel, 1 Iron, 1 copper ore, 4 steel, 12 coal, 1 hides, 3 logs, 1 leather + 38 gr.	18 s	~1567 gr.
+Boleslav Bavor's reforged sword	1 Toledo steel, 1 Iron, 1 copper ore, 4 steel, 15 coal, 1 hides, 3 logs, 1 leather + 34 gr.	18 s	~1793 gr.
+Lord Capon's longsword	1 copper ore, 8 steel, 12 coal, 4 logs, 1 hides, 1 leather + 50 gr.	18 s	~2047 gr.
+Henry's longsword	1 copper ore, 8 steel, 12 coal, 4 logs, 1 hides, 1 leather + 50 gr.	18 s	~2047 gr.
+Radzig Kobyla's longsword (Istvan)	1 copper ore, 8 steel, 12 coal, 4 logs, 1 hides, 1 leather + 50 gr.	18 s	~2047 gr.
+Battle longsword	1 Cow skin, 1 Eight-sided sword pommel, 1 Horned sword guard, 3 Frankfurt steel, 3 Iron, 2 copper ore, 3 steel, 10 coal, 1 hides, 2 logs, 1 leather + 56 gr.	18 s	~2400 gr.
+Knight shield 85 variants	4 logs, 1 hides, 1 steel, 1 leather + 4 gr.	20 s	~126 gr.
+Practice shield	4 logs, 1 hides, 1 steel, 1 leather + 4 gr.	20 s	~126 gr.
+Ghostly horseshoes	2 Iron, 1 Toledo steel, 1 copper ore, 1 steel, 8 coal, 1 logs + 12 gr.	20 s	~300 gr.
+Emmeram's hunting sword	1 copper ore, 4 steel, 9 coal, 3 logs, 1 hides, 2 leather + 15 gr.	20 s	~1138 gr.
+Executioner's axe	2 Iron, 1 Toledo steel, 2 copper ore, 6 steel, 16 coal, 2 hides, 6 logs, 2 hafts + 108 gr.	20 s	~1427 gr.
+Captain's mace	1 copper ore, 9 steel, 15 coal, 5 logs, 2 hides, 2 hafts + 26 gr.	20 s	~1726 gr.
+Basilard	1 Fastening material, 1 Copper, 1 Exotic wood, 1 Toledo steel, 1 Iron, 2 copper ore, 5 steel, 19 coal, 2 hides, 5 logs, 2 leather + 38 gr.	20 s	~1866 gr.
+Replica of the longsword "Absolver"	1 Deer skin, 1 Eight-sided sword pommel, 1 Horned sword guard, 2 Frankfurt steel, 2 Iron, 2 copper ore, 5 steel, 15 coal, 1 hides, 5 logs, 2 leather + 50 gr.	20 s	~2451 gr.
+Dry Devil's longsword	2 copper ore, 11 steel, 17 coal, 6 logs, 1 hides, 2 leather + 57 gr.	20 s	~2472 gr.
+Raven's beak	2 copper ore, 10 steel, 16 coal, 6 logs, 1 hides, 2 hafts + 54 gr.	20 s	~2622 gr.
+Decorated sword pommel (Smithing) ×2	1 Copper, 2 fine silver	12 s	~76 gr.
+Guisarme	4 steel, 11 coal, 2 logs, 1 hides, 2 hafts + 13 gr.	22 s	~1013 gr.
+Noble's sword	1 Deer skin, 1 Decorated sword pommel, 1 Horned sword guard, 1 Toledo steel, 1 Iron, 2 copper ore, 8 steel, 24 coal, 3 hides, 9 logs, 3 leather + 125 gr.	22 s	~2078 gr.
+Knight's axe	2 Iron, 2 Toledo steel, 1 Copper, 1 Fastening material, 1 copper ore, 7 steel, 29 coal, 3 hides, 8 logs, 3 hafts + 46 gr.	22 s	~2483 gr.
+Ataman's sabre	1 Iron, 2 Toledo steel, 1 Deer skin, 2 Copper, 1 Fastening material, 2 copper ore, 8 steel, 24 coal, 2 hides, 7 logs, 3 leather + 84 gr.	22 s	~2690 gr.
+Lord von Bergow's sword	2 copper ore, 16 steel, 22 coal, 8 logs, 3 hides, 3 leather + 142 gr.	22 s	~2709 gr.
+Broad longsword	1 Cow skin, 1 Pear sword pommel, 1 Ordinary sword guard, 3 Frankfurt steel, 2 Iron, 2 copper ore, 8 steel, 22 coal, 3 hides, 8 logs, 3 leather + 219 gr.	22 s	~2854 gr.
+Lavish warhammer	1 copper ore, 15 steel, 26 coal, 8 logs, 2 hides, 3 hafts + 58 gr.	22 s	~2897 gr.
+Knight's sword	1 Coin sword pommel, 1 Reinforced sword guard, 2 Frankfurt steel, 2 Scrap metal, 1 Cow skin, 2 copper ore, 8 steel, 24 coal, 2 hides, 8 logs, 3 leather + 153 gr.	22 s	~3047 gr.
+Ornate mace	1 copper ore, 14 steel, 26 coal, 8 logs, 3 hides, 3 hafts + 40 gr.	22 s	~3104 gr.
+Lion's roar Kilij	2 Coloured gold, 1 Enamel powder, 2 Jasper, 1 Acidum chloridum, 1 Exotic wood, 2 Dogfish skin, 2 Toledo steel, 1 copper ore, 1 leather	22 s	~3205 gr.
+Sheet steel ×2	2 Toledo steel, 3 coal	12 s	~84 gr.
+Trollbane hammer	1 silver ore, 30 steel, 4 hides, 7 pine resin, 6 hafts, 1 pure silver nuggets + 64 gr.	24 s	~1854 gr.
+Owl’s Claw sabre	1 silver ore, 31 steel, 4 hides, 9 leather, 7 pine resin, 1 pure silver nuggets + 64 gr.	24 s	~2959 gr.
+Sword of Sir Valentine	1 Copper, 1 Straight sword guard, 1 Cow skin, 1 Coin sword pommel, 1 Frankfurt steel, 1 Scrap metal, 1 silver ore, 33 steel, 13 leather, 27 coal, 1 pure silver nuggets + 160 gr.	24 s	~3081 gr.
+Duelling longsword	1 Deer skin, 1 Horned sword guard, 1 Pear sword pommel, 3 Toledo steel, 2 Iron, 1 silver ore, 33 steel, 13 leather, 24 coal, 1 pure silver nuggets + 309 gr.	24 s	~3662 gr.
+Four Evangelists' longsword	3 silver ore, 1 gold ore, 65 steel, 9 hides, 19 leather, 16 pine resin, 2 pure silver nuggets + 490 gr.	26 s	~3311 gr.
+Master Menhart's longsword	2 silver ore, 1 gold ore, 65 steel, 9 hides, 19 leather, 16 pine resin, 2 pure silver nuggets + 424 gr.	26 s	~5057 gr.
+Madman's longsword	1 Fastening material, 3 Frankfurt steel, 2 silver ore, 1 gold ore, 50 steel, 20 leather, 36 coal, 2 pure silver nuggets + 485 gr.	26 s	~5083 gr.
+Adorned axe (from the relic)	1 Broken axe, 1 Fastening material, 24 steel, 20 coal, 7 hafts, 2 pure silver nuggets, 1 meteoric iron + 46 gr.	28 s	~700 gr.
+Adorned axe (replica)	1 Fastening material, 39 steel, 32 coal, 11 hafts, 2 pure silver nuggets, 1 meteoric iron + 75 gr.	28 s	~700 gr.
+Dragon fang Axe	2 Toledo steel, 1 Deer skin, 2 Fastening material, 2 Iron, 2 Exotic wood, 1 Dragon claw, 36 steel, 26 coal, 11 hafts, 2 pure silver nuggets, 1 meteoric iron + 93 gr.	28 s	~1444 gr.
+Poleaxe	1 silver ore, 1 gold ore, 38 steel, 5 hides, 9 pine resin, 8 hafts, 2 pure silver nuggets, 1 meteoric iron + 80 gr.	28 s	~1656 gr.
+St. George's sword	2 Coloured gold, 1 Rock Pitch, 2 Enamel powder, 1 Exotic wood, 1 Straight sword guard, 1 Decorated sword pommel, 2 Toledo steel, 1 silver ore, 26 steel, 11 leather, 19 coal, 2 pure silver nuggets, 1 meteoric iron + 92 gr.	24 s	~1866 gr.
+Basilisk warhammer	3 silver ore, 1 gold ore, 71 steel, 10 hides, 17 pine resin, 15 hafts, 2 pure silver nuggets, 1 meteoric iron + 554 gr.	28 s	~2550 gr.
+Longsword of the Four Evangelists	1 Weapon stub, 2 Frankfurt steel, 2 Iron, 1 Acidum chloridum, 1 Enamel powder, 55 steel, 23 leather, 41 coal, 2 pure silver nuggets, 1 meteoric iron + 636 gr.	28 s	~3311 gr.
+Lingua belli longsword	1 Acidum chloridum, 2 Tincal, 1 Coloured gold, 1 Horned sword guard, 1 Eight-sided sword pommel, 2 Toledo steel, 1 Sheet steel, 3 silver ore, 1 gold ore, 54 steel, 22 leather, 39 coal, 2 pure silver nuggets, 1 meteoric iron + 881 gr.	28 s	~5204 gr.
+Henry's sword reforged	1 Henry's longsword, 3 Toledo steel, 48 steel, 23 leather, 48 coal, 2 pure silver nuggets, 1 meteoric iron + 1377 gr.	28 s	~5588 gr.

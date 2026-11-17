@@ -9,6 +9,7 @@ const app = {
     crafts: [],
     materialsCrafts: [], // корзина материалов
     materialsInStock: {}, // наличие ресурсов
+    shopDB: new ShopDB(),
     editingResourceName: null,
     editingResourceType: null,
     currentCompositionData: {},
@@ -30,9 +31,11 @@ function loadData() {
         app.crafts = imported.crafts;
         app.materialsCrafts = saved.materialsCrafts || [];
         app.materialsInStock = {};
+        app.shopDB = ShopDB.fromDict(saved.shopListings);
         renderResourcesTable();
         renderCraftsTable();
         renderMaterialsTable();
+        renderShopTables();
         return;
     }
 
@@ -47,7 +50,7 @@ function loadData() {
             renderResourcesTable();
             renderCraftsTable();
             renderMaterialsTable();
-            debounceSave(app.registry, app.crafts, app.materialsCrafts);
+            debounceSave(app.registry, app.crafts, app.materialsCrafts, app.shopDB);
         })
         .catch(() => {
             // Если файл не найден — пустое приложение
@@ -99,7 +102,7 @@ document.addEventListener('keydown', (e) => {
                     renderResourcesTable();
                     renderCraftsTable();
                     showToast('Ресурс удалён', 'success');
-                    debounceSave(app.registry, app.crafts, app.materialsCrafts);
+                    debounceSave(app.registry, app.crafts, app.materialsCrafts, app.shopDB);
                 } catch (err) {
                     showError(err.message);
                 }
@@ -111,7 +114,7 @@ document.addEventListener('keydown', (e) => {
                 app.crafts.splice(index, 1);
                 renderCraftsTable();
                 showToast('Крафт удалён', 'success');
-                debounceSave(app.registry, app.crafts, app.materialsCrafts);
+                debounceSave(app.registry, app.crafts, app.materialsCrafts, app.shopDB);
             }
         }
     }
@@ -148,7 +151,8 @@ window.addEventListener('beforeunload', () => {
         const data = {
             resources: app.registry.toDict(),
             crafts: app.crafts,
-            materialsCrafts: app.materialsCrafts || []
+            materialsCrafts: app.materialsCrafts || [],
+            shopListings: app.shopDB.toDict()
         };
         localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
     } catch (e) {

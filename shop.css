@@ -1,0 +1,355 @@
+/* ============================================================
+   SHOP — Стили для вкладки «Лавка»
+   ============================================================ */
+
+/* === ПАНЕЛЬ ЛАВКИ === */
+.shop-panel {
+    background: linear-gradient(180deg, #2a2118 0%, #221c16 100%);
+    border: 2px solid #5a4a32;
+    border-radius: 4px;
+    padding: 16px 18px;
+    box-shadow:
+        0 6px 16px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(180, 150, 100, 0.06);
+}
+
+/* === СТАТИСТИКА === */
+.shop-stats {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 12px 14px;
+    background: linear-gradient(180deg, #2e2620 0%, #221c16 100%);
+    border: 2px solid #6a5a42;
+    border-radius: 4px;
+    margin-bottom: 14px;
+}
+
+.shop-stat-item {
+    flex: 1;
+    min-width: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.shop-stat-label {
+    font-size: 10px;
+    color: #8a7a60;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    font-weight: 600;
+}
+
+.shop-stat-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: #c9a84c;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.shop-stat-revenue {
+    color: #81c784;
+}
+
+.shop-stat-profit {
+    color: #81c784;
+}
+
+.shop-stat-profit.negative {
+    color: #e08080;
+}
+
+.shop-stat-roi {
+    color: #ffb74d;
+}
+
+.shop-stat-roi.negative {
+    color: #e08080;
+}
+
+/* === СТАТИСТИКА ПО ТИПАМ === */
+.shop-stats-by-type {
+    margin-bottom: 14px;
+}
+
+/* === ПОДВКЛАДКИ ЛАВКИ === */
+.shop-sub-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 12px;
+    background: linear-gradient(180deg, #221c16 0%, #1a1612 100%);
+    border: 2px solid #5a4a32;
+    border-radius: 4px;
+    padding: 3px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.shop-tab-btn {
+    flex: 1;
+    padding: 8px 12px;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    color: #8a7a60;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: 'Georgia', serif;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+}
+
+.shop-tab-btn:hover {
+    color: #c0a870;
+    background: rgba(90, 74, 50, 0.2);
+}
+
+.shop-tab-btn.active {
+    background: linear-gradient(180deg, #5a4a32 0%, #3a2e20 100%);
+    color: #f0e0b0;
+    border-color: #7a6848;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* === ПОДВКЛАДКИ КОНТЕНТ === */
+.shop-sub-content {
+    display: none;
+}
+
+.shop-sub-content.active {
+    display: block;
+}
+
+/* === ЗАГОЛОВКИ В ЛАВКЕ === */
+.shop-panel .table-header h2 {
+    font-size: 15px;
+    margin: 0 0 10px 0;
+}
+
+.shop-panel .table-header {
+    margin-bottom: 10px;
+}
+
+.shop-panel .table-actions {
+    gap: 6px;
+}
+
+.shop-panel .table-actions .form-input {
+    font-size: 12px;
+    padding: 5px 8px;
+}
+
+.shop-panel .table-actions .btn {
+    font-size: 12px;
+    padding: 5px 10px;
+}
+
+/* === ТАБЛИЦА АКТИВНЫХ ЛИСТИНГОВ === */
+#shop-active-table {
+    font-size: 12px;
+}
+
+#shop-active-table thead th {
+    padding: 6px 4px;
+    font-size: 11px;
+}
+
+#shop-active-table tbody td {
+    padding: 5px 4px;
+}
+
+#shop-active-table thead th:nth-child(1),
+#shop-active-table tbody td:nth-child(1) {
+    min-width: 100px;
+}
+
+#shop-active-table thead th:nth-child(2),
+#shop-active-table tbody td:nth-child(2) {
+    width: 60px;
+}
+
+#shop-active-table thead th:nth-child(3),
+#shop-active-table tbody td:nth-child(3),
+#shop-active-table thead th:nth-child(4),
+#shop-active-table tbody td:nth-child(4),
+#shop-active-table thead th:nth-child(5),
+#shop-active-table tbody td:nth-child(5) {
+    width: 45px;
+    text-align: center;
+}
+
+#shop-active-table thead th:nth-child(6),
+#shop-active-table tbody td:nth-child(6),
+#shop-active-table thead th:nth-child(7),
+#shop-active-table tbody td:nth-child(7) {
+    width: 65px;
+    text-align: right;
+}
+
+#shop-active-table thead th:nth-child(8),
+#shop-active-table tbody td:nth-child(8) {
+    width: 65px;
+    text-align: right;
+}
+
+#shop-active-table thead th:nth-child(9),
+#shop-active-table tbody td:nth-child(9) {
+    width: 90px;
+}
+
+#shop-active-table thead th:nth-child(10),
+#shop-active-table tbody td:nth-child(10) {
+    width: 75px;
+}
+
+/* === ТАБЛИЦА ПРОДАННЫХ ЛИСТИНГОВ === */
+#shop-sold-table {
+    font-size: 12px;
+}
+
+#shop-sold-table thead th {
+    padding: 6px 4px;
+    font-size: 11px;
+}
+
+#shop-sold-table tbody td {
+    padding: 5px 4px;
+}
+
+#shop-sold-table thead th:nth-child(1),
+#shop-sold-table tbody td:nth-child(1) {
+    min-width: 100px;
+}
+
+#shop-sold-table thead th:nth-child(2),
+#shop-sold-table tbody td:nth-child(2) {
+    width: 60px;
+}
+
+#shop-sold-table thead th:nth-child(3),
+#shop-sold-table tbody td:nth-child(3),
+#shop-sold-table thead th:nth-child(4),
+#shop-sold-table tbody td:nth-child(4) {
+    width: 45px;
+    text-align: center;
+}
+
+#shop-sold-table thead th:nth-child(5),
+#shop-sold-table tbody td:nth-child(5),
+#shop-sold-table thead th:nth-child(6),
+#shop-sold-table tbody td:nth-child(6) {
+    width: 70px;
+    text-align: right;
+}
+
+#shop-sold-table thead th:nth-child(7),
+#shop-sold-table tbody td:nth-child(7) {
+    width: 90px;
+}
+
+#shop-sold-table thead th:nth-child(8),
+#shop-sold-table tbody td:nth-child(8) {
+    width: 40px;
+}
+
+/* === ЦВЕТА ПРИБЫЛИ === */
+.profit-positive {
+    color: #81c784 !important;
+    font-weight: 600;
+}
+
+.profit-negative {
+    color: #e08080 !important;
+    font-weight: 600;
+}
+
+.profit-neutral {
+    color: #8a7a60 !important;
+}
+
+/* === СТАТУС ЛИСТИНГА === */
+.listing-soldout {
+    opacity: 0.5;
+}
+
+.listing-soldout td:first-child::after {
+    content: ' ✓';
+    color: #81c784;
+    font-weight: 700;
+}
+
+/* === КНОПКА ПРОДАТЬ === */
+.btn-sell {
+    background: linear-gradient(180deg, #2e5a28 0%, #1e3e1a 100%);
+    color: #81c784;
+    border-color: #4a8a40;
+    font-size: 11px;
+    padding: 4px 8px;
+}
+
+.btn-sell:hover {
+    background: linear-gradient(180deg, #3a6a34 0%, #2e5a28 100%);
+    border-color: #5a9a50;
+    color: #a0e0a0;
+}
+
+.btn-sell:disabled {
+    background: linear-gradient(180deg, #2a2118 0%, #1e1a14 100%);
+    color: #5a4a32;
+    border-color: #3a2e20;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+/* === ПРЕВЬЮ СТОИМОСТИ === */
+.shop-cost-preview {
+    padding: 10px 14px;
+    background: rgba(26, 22, 18, 0.8);
+    border: 1px solid #5a4a32;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #c0b090;
+    margin-bottom: 12px;
+    font-family: 'Georgia', serif;
+}
+
+.shop-cost-preview strong {
+    color: #c9a84c;
+}
+
+/* === СКРОЛЛБАР ДЛЯ БОЛЬШИХ ТАБЛИЦ === */
+.shop-panel::-webkit-scrollbar {
+    width: 8px;
+}
+
+.shop-panel::-webkit-scrollbar-track {
+    background: #1a1612;
+}
+
+.shop-panel::-webkit-scrollbar-thumb {
+    background: #5a4a32;
+    border-radius: 4px;
+}
+
+.shop-panel::-webkit-scrollbar-thumb:hover {
+    background: #7a6848;
+}
+
+/* === АДАПТИВНОСТЬ === */
+@media (max-width: 768px) {
+    .shop-stats {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .shop-stat-item {
+        min-width: 100%;
+    }
+
+    .shop-stat-value {
+        font-size: 18px;
+    }
+}

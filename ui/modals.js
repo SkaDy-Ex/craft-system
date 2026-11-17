@@ -57,3 +57,13 @@ document.querySelectorAll('.modal').forEach(modal => {
         }
     });
 });
+
+// Не закрывать модалку при клике на поля ввода, кнопки и другие интерактивные элементы
+document.querySelectorAll('.modal').forEach(modal => {
+    modal.addEventListener('click', (e) => {
+        const interactiveSelectors = 'input, textarea, select, button, .form-input, .form-select, .btn, .btn-loupe';
+        if (e.target.closest(interactiveSelectors)) {
+            e.stopPropagation();
+        }
+    });
+});

@@ -271,6 +271,9 @@ function renderMaterialsTable() {
     const compositeResources = [];
     const basicResources = [];
 
+    const searchComposite = (document.getElementById('search-materials-composite')?.value || '').toLowerCase();
+    const searchBasic = (document.getElementById('search-materials-basic')?.value || '').toLowerCase();
+
     for (const resName of Object.keys(totalNeeded)) {
         const res = app.registry.resources[resName];
         if (res && res.type === 'composite') {
@@ -389,20 +392,28 @@ function renderMaterialsTable() {
 
     // Render composite resources
     if (compositeResources.length > 0) {
+        let hasVisible = false;
         compositeSection.style.display = 'block';
         for (const resName of compositeResources) {
+            if (searchComposite && !resName.toLowerCase().includes(searchComposite)) continue;
             renderRow(resName, compositeTbody);
+            hasVisible = true;
         }
+        if (!hasVisible) compositeSection.style.display = 'none';
     } else {
         compositeSection.style.display = 'none';
     }
 
     // Render basic resources
     if (basicResources.length > 0) {
+        let hasVisible = false;
         basicSection.style.display = 'block';
         for (const resName of basicResources) {
+            if (searchBasic && !resName.toLowerCase().includes(searchBasic)) continue;
             renderRow(resName, basicTbody);
+            hasVisible = true;
         }
+        if (!hasVisible) basicSection.style.display = 'none';
     } else {
         basicSection.style.display = 'none';
     }
@@ -412,6 +423,15 @@ function renderMaterialsTable() {
     document.getElementById('stat-crafts').textContent = '🔨 Крафты: ' + crafts.length + ' в корзине';
     document.getElementById('stat-total-cost').textContent = '💰 Итого: ' + totalCost.toFixed(2) + ' грш.';
 }
+
+// Поиск по материалам
+document.getElementById('search-materials-composite')?.addEventListener('input', () => {
+    renderMaterialsTable();
+});
+
+document.getElementById('search-materials-basic')?.addEventListener('input', () => {
+    renderMaterialsTable();
+});
 
 // Clear cart
 document.getElementById('btn-clear-cart')?.addEventListener('click', () => {

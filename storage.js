@@ -7,7 +7,7 @@ const CATEGORY_FILTER_KEY = 'craft_system_category_filter';
 
 let saveTimeout = null;
 
-function debounceSave(registry, crafts, materialsCrafts) {
+function debounceSave(registry, crafts, materialsCrafts, shopDB) {
     if (saveTimeout) {
         clearTimeout(saveTimeout);
     }
@@ -16,7 +16,8 @@ function debounceSave(registry, crafts, materialsCrafts) {
             const data = {
                 resources: registry.toDict(),
                 crafts: crafts,
-                materialsCrafts: materialsCrafts || []
+                materialsCrafts: materialsCrafts || [],
+                shopListings: shopDB ? shopDB.toDict() : []
             };
             localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
             showToast('Автосохранение', 'info');

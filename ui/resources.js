@@ -171,7 +171,7 @@ document.getElementById('form-basic-resource').addEventListener('submit', (e) =>
 
     if (!name) { showToast('Введите название', 'error'); return; }
     if (!unit) { showToast('Введите единицу измерения', 'error'); return; }
-    if (isNaN(cost) || cost < 0) { showToast('Введите корректную цену', 'error'); return; }
+    if (isNaN(cost) || cost <= 0) { showToast('Введите корректную цену (>0)', 'error'); return; }
     if (name in app.registry.resources && name !== app.editingResourceName) {
         showToast('Ресурс с таким именем уже существует', 'error'); return;
     }
@@ -208,7 +208,7 @@ function renderCompositionTable() {
         input.value = qty;
         input.addEventListener('change', () => {
             const val = parseFloat(input.value);
-            if (!isNaN(val) && val > 0) {
+            if (!isNaN(val) && val > 0 && isFinite(val)) {
                 app.currentCompositionData[resName] = val;
             }
             updateCostPreview();
@@ -240,11 +240,30 @@ document.getElementById('btn-add-component').addEventListener('click', () => {
         select.appendChild(opt);
     });
 
+    document.getElementById('component-search').value = '';
     document.getElementById('component-qty').value = '1';
+
+    // Фильтрация по поиску
+    const filterComponents = () => {
+        const search = document.getElementById('component-search').value.toLowerCase();
+        for (const opt of select.options) {
+            opt.style.display = (!search || opt.text.toLowerCase().includes(search)) ? '' : 'none';
+        }
+        if (select.options.length > 0 && !select.value) {
+            select.selectedIndex = 0;
+        }
+    };
+    filterComponents();
+    document.getElementById('component-search').oninput = filterComponents;
+
     showModal('modal-select-component');
 
     document.getElementById('btn-confirm-component').onclick = () => {
         const name = select.value;
+        if (!name) {
+            showToast('Выберите ресурс', 'error');
+            return;
+        }
         const qty = parseFloat(document.getElementById('component-qty').value);
         if (isNaN(qty) || qty <= 0) {
             showToast('Введите корректное количество', 'error');
@@ -309,8 +328,15 @@ document.getElementById('form-composition').addEventListener('submit', (e) => {
             delete app.registry.resources[app.editingResourceName];
         }
 
-        const outputQty = parseInt(document.getElementById('comp-output').value) || 1;
-        const toll = parseFloat(document.getElementById('comp-toll').value) || 0;
+        const outputQty = parseInt(document.getElementById('comp-output').value);
+        const toll = parseFloat(document.getElementById('comp-toll').value);
+
+        if (isNaN(outputQty) || outputQty < 1) {
+            showToast('Введите корректный выход (≥1)', 'error'); return;
+        }
+        if (isNaN(toll) || toll < 0) {
+            showToast('Введите корректную пошлину (≥0)', 'error'); return;
+        }
 
         try {
             app.registry.addOrUpdate(new CompositeResource(name, { ...app.currentCompositionData }, outputQty, toll));
@@ -328,9 +354,16 @@ document.getElementById('form-composition').addEventListener('submit', (e) => {
     }
     // === КРАФТ ===
     else {
-        const outputQty = parseInt(document.getElementById('comp-output').value) || 1;
-        const toll = parseFloat(document.getElementById('comp-toll').value) || 0;
+        const outputQty = parseInt(document.getElementById('comp-output').value);
+        const toll = parseFloat(document.getElementById('comp-toll').value);
         const category = document.getElementById('comp-category')?.value || 'other';
+
+        if (isNaN(outputQty) || outputQty < 1) {
+            showToast('Введите корректный выход (≥1)', 'error'); return;
+        }
+        if (isNaN(toll) || toll < 0) {
+            showToast('Введите корректную пошлину (≥0)', 'error'); return;
+        }
 
         if (app.editingCraftIndex === -1) {
             if (name in app.registry.resources) {
